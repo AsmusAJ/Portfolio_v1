@@ -1,0 +1,12 @@
+:root {
+  --bg: #f5ece1;
+  --sans: system-ui, "Segoe UI", Roboto, sans-serif;
+  --heading: system-ui, "Segoe UI", Roboto, sans-serif;
+  --mono: ui-monospace, Consolas, monospace;
+
+  background: var(--bg);
+}
+
+.app-shell {
+  max-width: 800px;
+}

@@ -1,6 +1,10 @@
 using System.Runtime;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<PortfolioDbContext>(options =>
+    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddCors(options =>
 {
@@ -15,28 +19,18 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
+using (var scope = app.Services.CreateScope())
+{
+    var PortfolioDbContext = scope.ServiceProvider.GetRequiredService<PortfolioDbContext>();
+    PortfolioDbContext.Database.EnsureCreated();
+    var seeder = new DatabaseSeeder();
+    seeder.SeedData(PortfolioDbContext);
+}
+
 app.UseCors("AllowFrontend");
 
-app.MapGet("/api/projects", () => {
-    var projects = new[]
-    {
-        new
-        {
-            Id = 1,
-            Title = "Anthony Asmus",
-            Description = "A personal portfolio built with React, TypeScript, and ASP.NET Core.",
-            Tech = new[] { "React", "TypeScript", "C#", "ASP.NET Core" },
-            Url = "https://example.com"
-        },
-        new
-        {
-            Id = 2,
-            Title = "Cool App",
-            Description = "Another project I built.",
-            Tech = new[] { "C#", "PostgreSQL" },
-            Url = "https://example.com"
-        }
-    };
+app.MapGet("/api/projects", async (PortfolioDbContext PortfolioDbContext) => {
+    var projects = await PortfolioDbContext.Projects.ToListAsync();
 
     return Results.Ok(projects);
 });
@@ -56,7 +50,6 @@ app.MapGet("/api/Profile", () => {
             Email = "asmusaj@umich.edu",
         }
     };
-
 
     return Results.Ok(profile);
 });

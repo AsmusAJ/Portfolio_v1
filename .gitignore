@@ -450,4 +450,4 @@ coverage/
 
 # Optional .NET local settings
 appsettings.Local.json
-# appsettings.Development.json
+appsettings.Development.json

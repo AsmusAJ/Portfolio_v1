@@ -1,0 +1,36 @@
+.navbar {
+    margin-top: 1rem;
+}
+
+.nav-links {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    align-items: center;
+    justify-content: flex-end;
+    list-style: none;
+}
+
+.nav-link {
+    color: var(--text-strong);
+    text-decoration: none;
+    transition: color 150ms ease;
+}
+
+.nav-link:hover {
+    color: var(--text-highlight);
+}
+
+.nav-link-active {
+    color: var(--text-bold);
+}
+
+.nav-link-active {
+    font-weight: 700;
+}
+
+.nav-link:focus-visible {
+    outline: 2px solid var(--text-highlight);
+    outline-offset: 4px;
+    border-radius: 4px;
+}

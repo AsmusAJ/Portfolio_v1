@@ -1,23 +1,48 @@
-import { useEffect, useState } from "react";
-import { getProfile, type Profile } from "../api";
+import "./ProfileHero.css";
+import headshot from "../assets/headshot.jpg";
+import { FaLinkedin, FaGithub, FaEnvelope } from "react-icons/fa";
 
 export default function ProfileHero() {
-  const [profile, setProfile] = useState<Profile | null>(null);
-
-  useEffect(() => {
-    getProfile().then(setProfile).catch(console.error);
-  }, []);
-
-  return (
-    <section>
-      <h1>{profile?.name}</h1>
-      <h2>{profile?.title}</h2>
-      <p>{profile?.bio}</p>
-      <div>
-        <a href={profile?.links?.linkedIn}>LinkedIn</a>
-        <a href={profile?.links?.gitHub}>GitHub</a>
-        <a href={`mailto:${profile?.links?.email}`}>Email</a>
-      </div>
-    </section>
-  );
+    return (
+        <section className="hero-container">
+            <img src={headshot} alt="Profile" className="profile-image" />
+            <div className="profile-content">
+                <h1>Anthony Asmus</h1>
+                <h2>Software Engineer @ UofM</h2>
+                <p>
+                    My passion is to create full-stack web applications that are
+                    functional, scalable, and engaging. I'm passionate about
+                    using code as both a problem-solving tool and a creative
+                    medium.
+                </p>
+                <div className="profile-links">
+                    <a
+                        href="https://www.linkedin.com/in/anthonyasmus/"
+                        aria-label="LinkedIn"
+                        className="profile-link"
+                        target="_blank"
+                        rel="noreferrer"
+                    >
+                        <FaLinkedin />
+                    </a>
+                    <a
+                        href="https://github.com/AsmusAJ"
+                        aria-label="GitHub"
+                        className="profile-link"
+                        target="_blank"
+                        rel="noreferrer"
+                    >
+                        <FaGithub />
+                    </a>
+                    <a
+                        href="mailto:anthonyasmus@gmail.com"
+                        aria-label="Email"
+                        className="profile-link"
+                    >
+                        <FaEnvelope />
+                    </a>
+                </div>
+            </div>
+        </section>
+    );
 }

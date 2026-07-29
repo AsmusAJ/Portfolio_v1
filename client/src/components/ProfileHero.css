@@ -1,0 +1,54 @@
+.hero-container {
+    margin-top: 7rem;
+    margin-bottom: 7rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+}
+
+.profile-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
+
+.profile-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.profile-content h1,
+.profile-content h2 {
+    margin: 0;
+}
+
+.profile-content p {
+    margin-top: 0.5rem;
+}
+
+.profile-links {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.profile-link {
+    color: var(--text-main);
+    text-decoration: none;
+    font-size: 2.3rem;
+    transition:
+        color 150ms ease,
+        transform 150ms ease;
+}
+
+.profile-link:hover {
+    color: var(--text-highlight);
+    transform: translateY(-2px);
+}
+
+.profile-link:focus-visible {
+    outline: 2px solid var(--text-highlight);
+    outline-offset: 4px;
+    border-radius: 4px;
+}

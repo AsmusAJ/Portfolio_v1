@@ -1,0 +1,9 @@
+.card {
+    border: 3px solid var(--border);
+    border-radius: 15px;
+    width: 100%;
+}
+
+.bottom-tags {
+    margin-top: auto;
+}

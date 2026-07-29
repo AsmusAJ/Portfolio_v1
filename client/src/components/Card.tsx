@@ -1,11 +1,17 @@
 import "./Card.css";
 
-export default function Card() {
+export default function Card({
+    title,
+    description,
+}: {
+    title: string;
+    description: string;
+}) {
     return (
         <article className="card">
-            <h2 style={{ marginTop: 0 }}>Card Title</h2>
+            <h2 style={{ marginTop: 0 }}>{title}</h2>
             <h3>Card Subtitle</h3>
-            <p>Description</p>
+            <p>{description}</p>
             <ul className="bottom-tags">
                 <li>React</li>
                 <li>TypeScript</li>

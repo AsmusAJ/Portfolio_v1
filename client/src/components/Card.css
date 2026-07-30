@@ -1,7 +1,17 @@
 .card {
+    padding: 0.7rem;
     border: 3px solid var(--border);
     border-radius: 15px;
     width: 100%;
+}
+
+.card h3,
+.card h4 {
+    margin: 0.5rem 0 0 0;
+}
+
+.card p {
+    text-align: center;
 }
 
 .bottom-tags {

@@ -1,6 +1,6 @@
 .hero-container {
     margin-top: 7rem;
-    margin-bottom: 7rem;
+    margin-bottom: 10rem;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -20,7 +20,7 @@
 }
 
 .profile-content h1,
-.profile-content h2 {
+.profile-content h3 {
     margin: 0;
 }
 

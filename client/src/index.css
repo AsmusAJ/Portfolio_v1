@@ -20,7 +20,7 @@
 body {
     margin: 0;
     background: var(--bg);
-    color: var(--text);
+    color: var(--text-main);
     font-family: var(--sans);
 }
 
@@ -35,6 +35,17 @@ h4 {
     color: var(--text-main);
 }
 
+h3 {
+    font-size: 1.25rem;
+}
+
+h4 {
+    font-size: 1.15rem;
+}
+
+.heading-strong {
+    color: var(--text-strong);
+}
 p {
     color: var(--text-muted);
 }

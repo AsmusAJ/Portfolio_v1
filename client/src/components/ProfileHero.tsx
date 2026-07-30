@@ -8,7 +8,7 @@ export default function ProfileHero() {
             <img src={headshot} alt="Profile" className="profile-image" />
             <div className="profile-content">
                 <h1>Anthony Asmus</h1>
-                <h2>Software Engineer @ UofM</h2>
+                <h3>Software Engineer @ UofM</h3>
                 <p>
                     My passion is to create full-stack web applications that are
                     functional, scalable, and engaging. I'm passionate about

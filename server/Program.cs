@@ -22,6 +22,7 @@ var app = builder.Build();
 using (var scope = app.Services.CreateScope())
 {
     var PortfolioDbContext = scope.ServiceProvider.GetRequiredService<PortfolioDbContext>();
+    PortfolioDbContext.Database.EnsureDeleted();
     PortfolioDbContext.Database.EnsureCreated();
     var seeder = new DatabaseSeeder();
     seeder.SeedData(PortfolioDbContext);
@@ -29,10 +30,10 @@ using (var scope = app.Services.CreateScope())
 
 app.UseCors("AllowFrontend");
 
-app.MapGet("/api/projects", async (PortfolioDbContext PortfolioDbContext) => {
-    var projects = await PortfolioDbContext.Projects.ToListAsync();
+app.MapGet("/api/work-experiences", async (PortfolioDbContext PortfolioDbContext) => {
+    var workExperiences = await PortfolioDbContext.WorkExperiences.ToListAsync();
 
-    return Results.Ok(projects);
+    return Results.Ok(workExperiences);
 });
 
 app.MapGet("/api/health", () => Results.Ok(new { status = "ok" }));

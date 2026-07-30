@@ -3,28 +3,36 @@ import Card from "./Card";
 import "./Summary.css";
 
 export default function Summary() {
-    type Project = {
+    interface PortfolioItem {
         id: number;
         title: string;
+        subtitle: string;
+        description: string;
+    }
+
+    type Experience = {
+        id: number;
+        title: string;
+        company: string;
         description: string;
     };
-    const [projects, setProjects] = useState<Project[]>([]);
+    const [workExperience, setWorkExperience] = useState<Experience[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
-        async function fetchProjects() {
+        async function fetchWorkExperience() {
             try {
                 const response = await fetch(
-                    "http://localhost:5087/api/projects"
+                    "http://localhost:5087/api/work-experiences"
                 );
 
                 if (!response.ok) {
-                    throw new Error("Failed to fetch projects");
+                    throw new Error("Failed to fetch work experience");
                 }
 
                 const data = await response.json();
-                setProjects(data);
+                setWorkExperience(data);
             } catch (err) {
                 if (err instanceof Error) {
                     setError(err.message);
@@ -36,11 +44,11 @@ export default function Summary() {
             }
         }
 
-        fetchProjects();
+        fetchWorkExperience();
     }, []);
 
     if (loading) {
-        return <p>Loading projects...</p>;
+        return <p>Loading work experience...</p>;
     }
 
     if (error) {
@@ -49,13 +57,14 @@ export default function Summary() {
 
     return (
         <section>
-            <h1>At a Glance</h1>
+            <h2 className="heading-strong">At a Glance</h2>
             <div className="card-box">
-                {projects.map((project) => (
+                {workExperience.map((experience) => (
                     <Card
-                        key={project.id}
-                        title={project.title}
-                        description={project.description}
+                        key={experience.id}
+                        title={experience.title}
+                        subtitle={experience.company}
+                        description={experience.description}
                     />
                 ))}
             </div>

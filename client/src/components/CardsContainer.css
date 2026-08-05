@@ -1,0 +1,7 @@
+.card-box {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem 3rem;
+    align-items: stretch;
+    margin-top: 0.5rem;
+}

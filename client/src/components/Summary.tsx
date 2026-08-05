@@ -1,15 +1,10 @@
 import { useEffect, useState } from "react";
-import Card from "./Card";
+import { NavLink } from "react-router-dom";
+import { FaExternalLinkAlt } from "react-icons/fa";
 import "./Summary.css";
+import CardContainer from "./CardsContainer";
 
 export default function Summary() {
-    interface PortfolioItem {
-        id: number;
-        title: string;
-        subtitle: string;
-        description: string;
-    }
-
     type Experience = {
         id: number;
         title: string;
@@ -55,18 +50,25 @@ export default function Summary() {
         return <p>Error: {error}</p>;
     }
 
+    const portfolioItems = workExperience.map((exp) => ({
+        id: exp.id,
+        title: exp.title,
+        subtitle: exp.company,
+        description: exp.description,
+    }));
+
     return (
         <section>
             <h2 className="heading-strong">At a Glance</h2>
-            <div className="card-box">
-                {workExperience.map((experience) => (
-                    <Card
-                        key={experience.id}
-                        title={experience.title}
-                        subtitle={experience.company}
-                        description={experience.description}
-                    />
-                ))}
+            <div>
+                <div className="header-box">
+                    <h3>Work Experience</h3>
+                    <NavLink to="/work" >
+                        <h3>View All Experience</h3>
+                        <FaExternalLinkAlt />
+                    </NavLink>
+                </div>
+                <CardContainer PortfolioItems={portfolioItems} />
             </div>
         </section>
     );

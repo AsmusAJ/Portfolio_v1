@@ -1,5 +1,13 @@
-.card-box {
+.header-box {
     display: flex;
     flex-direction: row;
-    gap: 2rem;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-box a {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
 }

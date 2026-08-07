@@ -31,7 +31,9 @@ using (var scope = app.Services.CreateScope())
 app.UseCors("AllowFrontend");
 
 app.MapGet("/api/work-experiences", async (PortfolioDbContext PortfolioDbContext) => {
-    var workExperiences = await PortfolioDbContext.WorkExperiences.ToListAsync();
+    var workExperiences = await PortfolioDbContext.WorkExperiences
+        .Include(w => w.Tags)
+        .ToListAsync();
 
     return Results.Ok(workExperiences);
 });

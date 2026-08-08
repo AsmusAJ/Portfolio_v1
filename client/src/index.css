@@ -1,8 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap");
 
 :root {
-    --bg: #f5ece1;
+    --bg: #fffbf8;
     --border: #d1c5b6;
+    --highlight: #f8f0e6;
 
     --text-bold: #1c1917;
     --text-strong: #241f1b;
@@ -14,7 +15,13 @@
     --heading: "Inter", system-ui, "Segoe UI", Roboto, sans-serif;
     --mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
 
+    --shadow: 0 12px 15px -6px rgba(36, 31, 27, 0.1);
+
     background: var(--bg);
+}
+
+.shadow {
+    box-shadow: var(--shadow);
 }
 
 body {
@@ -72,7 +79,7 @@ a {
 a:hover h2,
 a:hover h3,
 a:hover h4 {
-  color: inherit;
+    color: inherit;
 }
 
 a:hover {

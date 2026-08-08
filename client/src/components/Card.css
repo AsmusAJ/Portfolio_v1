@@ -3,6 +3,7 @@
     border: 3px solid var(--border);
     border-radius: 15px;
     width: 100%;
+    box-shadow: var(--shadow);
 }
 
 .card h3,
@@ -14,6 +15,27 @@
     text-align: center;
 }
 
+.card ul {
+    display: flex;
+    gap: 0.5rem;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.card li {
+    background-color: var(--highlight);
+    border-radius: 20px;
+    padding: 0.5rem 1rem;
+    margin: 0;
+}
+
 .bottom-tags {
     margin-top: auto;
+}
+
+.bottom-tags p {
+    margin: 0;
+    padding: 0;
+    color: var(--text-strong);
 }

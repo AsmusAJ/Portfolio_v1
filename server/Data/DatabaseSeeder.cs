@@ -29,7 +29,7 @@ public class DatabaseSeeder
                 Company = "KCF Technologies",
                 CompanyUrl = "https://kcftech.com/",
                 Priority = 200,
-                Tags = tags.Where(t => new[] { "C#", "ASP.NET", "MVC", "SQL" }.Contains(t.Name)).ToList()
+                Tags = tags.Where(t => new[] { "JavaScript" }.Contains(t.Name)).ToList()
             },
             new WorkExperience
             {

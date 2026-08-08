@@ -6,6 +6,7 @@ export interface PortfolioItem {
     title: string;
     subtitle: string;
     description: string;
+    tags?: string[];
 }
 
 type CardContainerProps = {
@@ -21,6 +22,7 @@ export default function CardContainer({ PortfolioItems  }: CardContainerProps) {
                     title={item.title}
                     subtitle={item.subtitle}
                     description={item.description}
+                    tags={item.tags}
                 />
             ))}
         </div>

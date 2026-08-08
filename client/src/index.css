@@ -1,9 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap");
 
 :root {
-    --bg: #fffbf8;
+    --bg: #F5ECE1;
     --border: #d1c5b6;
-    --highlight: #f8f0e6;
+    --highlight: #EEE1D0;
 
     --text-bold: #1c1917;
     --text-strong: #241f1b;

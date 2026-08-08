@@ -4,14 +4,14 @@ type CardProps = {
     title: string;
     subtitle: string;
     description: string;
-    tags: string[];
+    tags?: string[];
 };
 
 export default function Card({
     title,
     subtitle,
     description,
-    tags,
+    tags = [],
 }: CardProps) {
     return (
         <article className="card">

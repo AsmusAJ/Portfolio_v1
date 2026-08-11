@@ -1,14 +1,6 @@
 import Card from "./Card";
 import "./CardsContainer.css";
-
-export interface PortfolioItem {
-    id: number;
-    title: string;
-    subtitle: string;
-    description: string;
-    link: string;
-    tags?: string[];
-}
+import type { PortfolioItem } from "../types/portfolio";
 
 type CardContainerProps = {
     PortfolioItems: PortfolioItem[];

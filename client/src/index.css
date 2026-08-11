@@ -98,3 +98,8 @@ a:focus-visible {
     outline-offset: 4px;
     border-radius: 4px;
 }
+
+.shared-header {
+    margin-top: 7rem;
+    margin-bottom: 2rem;
+}

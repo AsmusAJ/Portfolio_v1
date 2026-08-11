@@ -1,12 +1,9 @@
 import { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
-import { FaExternalLinkAlt } from "react-icons/fa";
-import "./Summary.css";
-import CardContainer from "./CardsContainer";
 import type { Experience } from "../types/portfolio";
 import { experienceToPortfolioItem } from "../types/portfolio";
+import CardContainer from "../components/CardsContainer";
 
-export default function Summary() {
+export function Work() {
     const [workExperience, setWorkExperience] = useState<Experience[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
@@ -15,7 +12,7 @@ export default function Summary() {
         async function fetchWorkExperience() {
             try {
                 const response = await fetch(
-                    "http://localhost:5087/api/top-work-experiences"
+                    "http://localhost:5087/api/work-experiences"
                 );
 
                 if (!response.ok) {
@@ -49,28 +46,15 @@ export default function Summary() {
     const experienceItems = workExperience.map(experienceToPortfolioItem);
 
     return (
-        <section>
-            <h2 className="heading-strong">At a Glance</h2>
-            <div className="summary-box">
-                <div className="header-box">
-                    <h3>Work Experience</h3>
-                    <NavLink to="/work">
-                        <h3>View All Experience</h3>
-                        <FaExternalLinkAlt />
-                    </NavLink>
-                </div>
-                <CardContainer PortfolioItems={experienceItems} />
+        <div>
+            <div className="shared-header">
+                <h1>Work</h1>
+                <p>
+                    What I've built, where I've contributed, and what I've
+                    learned.
+                </p>
             </div>
-            <div className="summary-box">
-                <div className="header-box">
-                    <h3>Projects</h3>
-                    <NavLink to="/projects">
-                        <h3>View All Projects</h3>
-                        <FaExternalLinkAlt />
-                    </NavLink>
-                </div>
-                <CardContainer PortfolioItems={experienceItems} />
-            </div>
-        </section>
+            <CardContainer PortfolioItems={experienceItems} />
+        </div>
     );
 }

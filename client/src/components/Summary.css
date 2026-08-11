@@ -12,3 +12,7 @@
     align-items: center;
     gap: 0.5rem;
 }
+
+.summary-box {
+    margin-bottom: 1rem;
+}

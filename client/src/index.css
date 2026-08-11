@@ -15,7 +15,7 @@
     --heading: "Inter", system-ui, "Segoe UI", Roboto, sans-serif;
     --mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
 
-    --shadow: 0 12px 15px -6px rgba(36, 31, 27, 0.1);
+    --shadow: 0 5px 15px -6px rgba(36, 31, 27, 0.1);
 
     background: var(--bg);
 }
@@ -74,6 +74,7 @@ pre {
 .app-shell {
     max-width: 700px;
     margin: 0 auto;
+    padding-inline: 1rem;
 }
 
 a {

@@ -21,7 +21,7 @@ export default function Summary() {
         async function fetchWorkExperience() {
             try {
                 const response = await fetch(
-                    "http://localhost:5087/api/work-experiences"
+                    "http://localhost:5087/api/top-work-experiences"
                 );
 
                 if (!response.ok) {
@@ -52,7 +52,7 @@ export default function Summary() {
         return <p>Error: {error}</p>;
     }
 
-    const portfolioItems = workExperience.map((exp) => ({
+    const experienceItems = workExperience.map((exp) => ({
         id: exp.id,
         title: exp.title,
         subtitle: exp.company,
@@ -64,7 +64,7 @@ export default function Summary() {
     return (
         <section>
             <h2 className="heading-strong">At a Glance</h2>
-            <div>
+            <div className="summary-box">
                 <div className="header-box">
                     <h3>Work Experience</h3>
                     <NavLink to="/work">
@@ -72,7 +72,17 @@ export default function Summary() {
                         <FaExternalLinkAlt />
                     </NavLink>
                 </div>
-                <CardContainer PortfolioItems={portfolioItems} />
+                <CardContainer PortfolioItems={experienceItems} />
+            </div>
+            <div className="summary-box">
+                <div className="header-box">
+                    <h3>Projects</h3>
+                    <NavLink to="/projects">
+                        <h3>View All Projects</h3>
+                        <FaExternalLinkAlt />
+                    </NavLink>
+                </div>
+                <CardContainer PortfolioItems={experienceItems} />
             </div>
         </section>
     );

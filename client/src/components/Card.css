@@ -1,6 +1,7 @@
 .card {
     display: block;
     padding: 0.7rem;
+    min-height: 180px;
     border: 3px solid var(--border);
     border-radius: 15px;
     box-shadow: var(--shadow);

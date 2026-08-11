@@ -2,7 +2,6 @@
     padding: 0.7rem;
     border: 3px solid var(--border);
     border-radius: 15px;
-    width: 100%;
     box-shadow: var(--shadow);
 }
 
@@ -17,6 +16,7 @@
 
 .card ul {
     display: flex;
+    flex-wrap: wrap;
     gap: 0.5rem;
     list-style-type: none;
     padding: 0;

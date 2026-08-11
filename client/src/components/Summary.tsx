@@ -66,7 +66,9 @@ export default function Summary() {
                 <div className="header-box">
                     <h3>Work Experience</h3>
                     <NavLink to="/work">
-                        <h3>View All Experience</h3>
+                        <h3 style={{ marginRight: "0" }}>
+                            View All Experience
+                        </h3>
                         <FaExternalLinkAlt />
                     </NavLink>
                 </div>

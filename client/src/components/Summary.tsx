@@ -10,7 +10,7 @@ export default function Summary() {
         title: string;
         company: string;
         description: string;
-        tags: { name: string }[];
+        tags: string[];
     };
     const [workExperience, setWorkExperience] = useState<Experience[]>([]);
     const [loading, setLoading] = useState(true);
@@ -56,7 +56,7 @@ export default function Summary() {
         title: exp.title,
         subtitle: exp.company,
         description: exp.description,
-        tags: exp.tags.map((tag) => tag.name),
+        tags: exp.tags,
     }));
 
     return (

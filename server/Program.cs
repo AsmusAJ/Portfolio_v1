@@ -33,6 +33,16 @@ app.UseCors("AllowFrontend");
 app.MapGet("/api/work-experiences", async (PortfolioDbContext PortfolioDbContext) => {
     var workExperiences = await PortfolioDbContext.WorkExperiences
         .Include(w => w.Tags)
+        .Select(w => new WorkExperienceDto
+        {
+            Id = w.Id,
+            Title = w.Title,
+            Company = w.Company,
+            CompanyUrl = w.CompanyUrl,
+            Description = w.Description,
+            Priority = w.Priority,
+            Tags = w.Tags.Select(t => t.Name).ToList()
+        })
         .ToListAsync();
 
     return Results.Ok(workExperiences);

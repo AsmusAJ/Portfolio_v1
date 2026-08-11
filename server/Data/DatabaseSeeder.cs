@@ -25,11 +25,12 @@ public class DatabaseSeeder
             new WorkExperience
             {
                 Title = "Software Engineer Intern",
-                Description = "Worked as a member of the dev team including the front-to-back creation of a new module using mvc.  Helped redesign the setup tutorials.  Also contributed to the development of a new feature.",
+                Description =
+                    "Worked as a member of the dev team including the front-to-back creation of a new module using mvc.  Helped redesign the setup tutorials.  Also contributed to the development of a new feature.",
                 Company = "KCF Technologies",
                 CompanyUrl = "https://kcftech.com/",
                 Priority = 200,
-                Tags = tags.Where(t => new[] { "JavaScript" }.Contains(t.Name)).ToList()
+                Tags = tags.Where(t => new[] { "JavaScript", "HTML" }.Contains(t.Name)).ToList(),
             },
             new WorkExperience
             {
@@ -38,8 +39,12 @@ public class DatabaseSeeder
                 Company = "Howmet Aerospace",
                 CompanyUrl = "https://howmet.com/",
                 Priority = 100,
-                Tags = tags.Where(t => new[] { "C#", "ASP.NET", "MVC", "SQL" }.Contains(t.Name)).ToList()
-            });
+                Tags = tags.Where(t =>
+                        new[] { "C#", "ASP.NET", "MVC", "SQL", "HTML" }.Contains(t.Name)
+                    )
+                    .ToList(),
+            }
+        );
 
         db.SaveChanges();
     }

@@ -1,8 +1,40 @@
 .card {
+    display: block;
     padding: 0.7rem;
     border: 3px solid var(--border);
     border-radius: 15px;
     box-shadow: var(--shadow);
+    background: transparent;
+    transition:
+        transform 180ms ease,
+        box-shadow 180ms ease;
+    will-change: transform;
+    transform: translateY(0) scale(1);
+    color: inherit;
+}
+
+.card h3,
+.card h4,
+.card p,
+.card .bottom-tags {
+    color: inherit;
+}
+
+.card:hover,
+.card:focus-visible {
+    transform: translateY(-6px) scale(1.01);
+    box-shadow: 0 20px 30px -12px rgba(36, 31, 27, 0.18);
+    color: inherit;
+}
+
+.card:active {
+    transform: translateY(-2px) scale(1);
+}
+
+.card:focus-visible {
+    outline: 3px solid var(--text-highlight);
+    outline-offset: 6px;
+    border-radius: 12px;
 }
 
 .card h3,

@@ -4,6 +4,7 @@ type CardProps = {
     title: string;
     subtitle: string;
     description: string;
+    link: string;
     tags?: string[];
 };
 
@@ -11,10 +12,16 @@ export default function Card({
     title,
     subtitle,
     description,
+    link,
     tags = [],
 }: CardProps) {
     return (
-        <article className="card">
+        <a
+            href={link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="card"
+        >
             <h3 className="heading-strong" style={{ marginTop: 0 }}>
                 {title}
             </h3>
@@ -27,7 +34,7 @@ export default function Card({
                     </li>
                 ))}
             </ul>
-        </article>
+        </a>
     );
 }
 

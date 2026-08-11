@@ -10,6 +10,7 @@ export default function Summary() {
         title: string;
         company: string;
         description: string;
+        companyUrl: string;
         tags: string[];
     };
     const [workExperience, setWorkExperience] = useState<Experience[]>([]);
@@ -56,6 +57,7 @@ export default function Summary() {
         title: exp.title,
         subtitle: exp.company,
         description: exp.description,
+        link: exp.companyUrl,
         tags: exp.tags,
     }));
 
@@ -66,9 +68,7 @@ export default function Summary() {
                 <div className="header-box">
                     <h3>Work Experience</h3>
                     <NavLink to="/work">
-                        <h3 style={{ marginRight: "0" }}>
-                            View All Experience
-                        </h3>
+                        <h3>View All Experience</h3>
                         <FaExternalLinkAlt />
                     </NavLink>
                 </div>

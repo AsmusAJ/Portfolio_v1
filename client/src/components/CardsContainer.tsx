@@ -6,6 +6,7 @@ export interface PortfolioItem {
     title: string;
     subtitle: string;
     description: string;
+    link: string;
     tags?: string[];
 }
 
@@ -13,7 +14,7 @@ type CardContainerProps = {
     PortfolioItems: PortfolioItem[];
 };
 
-export default function CardContainer({ PortfolioItems  }: CardContainerProps) {
+export default function CardContainer({ PortfolioItems }: CardContainerProps) {
     return (
         <div className="card-box">
             {PortfolioItems.map((item) => (
@@ -22,6 +23,7 @@ export default function CardContainer({ PortfolioItems  }: CardContainerProps) {
                     title={item.title}
                     subtitle={item.subtitle}
                     description={item.description}
+                    link={item.link}
                     tags={item.tags}
                 />
             ))}

@@ -10,7 +10,7 @@ export type Experience = {
 export type PortfolioItem = {
     id: number;
     title: string;
-    subtitle: string;
+    subtitle?: string;
     description: string;
     link: string;
     tags?: string[];
@@ -18,10 +18,9 @@ export type PortfolioItem = {
 
 export type Project = {
     id: number;
-    name: string;
-    client: string;
+    title: string;
     description: string;
-    repoUrl: string;
+    url: string;
     tags: string[];
 };
 
@@ -39,10 +38,9 @@ export function experienceToPortfolioItem(exp: Experience): PortfolioItem {
 export function projectToPortfolioItem(project: Project): PortfolioItem {
     return {
         id: project.id,
-        title: project.name,
-        subtitle: project.client,
+        title: project.title,
         description: project.description,
-        link: project.repoUrl,
+        link: project.url,
         tags: project.tags,
     };
 }

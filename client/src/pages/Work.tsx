@@ -35,10 +35,6 @@ export function Work() {
         fetchWorkExperience();
     }, []);
 
-    if (loading) {
-        return <p>Loading work experience...</p>;
-    }
-
     if (error) {
         return <p>Error: {error}</p>;
     }
@@ -54,7 +50,11 @@ export function Work() {
                     learned.
                 </p>
             </div>
-            <CardContainer PortfolioItems={experienceItems} />
+            {loading ? (
+                <p>Loading work experience...</p>
+            ) : (
+                <CardContainer PortfolioItems={experienceItems} />
+            )}
         </div>
     );
 }

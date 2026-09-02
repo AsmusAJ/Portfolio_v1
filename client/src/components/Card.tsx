@@ -2,7 +2,7 @@ import "./Card.css";
 
 type CardProps = {
     title: string;
-    subtitle: string;
+    subtitle?: string;
     description: string;
     link: string;
     tags?: string[];
@@ -25,7 +25,7 @@ export default function Card({
             <h3 className="heading-strong" style={{ marginTop: 0 }}>
                 {title}
             </h3>
-            <h4>{subtitle}</h4>
+            {subtitle && <h4>{subtitle}</h4>}
             <p>{description}</p>
             <ul className="bottom-tags">
                 {tags.map((tag, index) => (

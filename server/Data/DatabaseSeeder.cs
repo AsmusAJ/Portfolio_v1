@@ -49,7 +49,7 @@ public class DatabaseSeeder
         db.Projects.AddRange(
             new Project
             {
-                Title = "Software Engineer Intern",
+                Title = "Portfolio Website",
                 Description =
                     "Worked as a member of the dev team including the front-to-back creation of a new module using mvc.  Helped redesign the setup tutorials.  Also contributed to the development of a new feature.",
                 Url = "https://kcftech.com/",

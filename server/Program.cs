@@ -75,6 +75,26 @@ app.MapGet(
     }
 );
 
+app.MapGet(
+    "/api/projects",
+    async (PortfolioDbContext PortfolioDbContext) =>
+    {
+        var projects = await PortfolioDbContext
+            .Projects.Include(p => p.Tags)
+            .Select(p => new ProjectDto
+            {
+                Id = p.Id,
+                Title = p.Title,
+                Description = p.Description,
+                Url = p.Url,
+                Tags = p.Tags.Select(t => t.Name).ToList(),
+            })
+            .ToListAsync();
+
+        return Results.Ok(projects);
+    }
+);
+
 app.MapGet("/api/health", () => Results.Ok(new { status = "ok" }));
 
 app.Run();

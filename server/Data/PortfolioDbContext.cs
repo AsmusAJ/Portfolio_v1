@@ -6,5 +6,7 @@ public class PortfolioDbContext : DbContext
 
     public DbSet<WorkExperience> WorkExperiences => Set<WorkExperience>();
 
+    public DbSet<Project> Projects => Set<Project>();
+
     public DbSet<Tag> Tags => Set<Tag>();
 }

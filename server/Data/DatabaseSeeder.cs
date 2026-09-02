@@ -46,6 +46,29 @@ public class DatabaseSeeder
             }
         );
 
+        db.Projects.AddRange(
+            new Project
+            {
+                Title = "Software Engineer Intern",
+                Description =
+                    "Worked as a member of the dev team including the front-to-back creation of a new module using mvc.  Helped redesign the setup tutorials.  Also contributed to the development of a new feature.",
+                Url = "https://kcftech.com/",
+                Priority = 200,
+                Tags = tags.Where(t => new[] { "JavaScript", "HTML" }.Contains(t.Name)).ToList(),
+            },
+            new Project
+            {
+                Title = "Programmer Analyst Intern",
+                Description = "Worked on various programming tasks and analysis projects.",
+                Url = "https://howmet.com/",
+                Priority = 100,
+                Tags = tags.Where(t =>
+                        new[] { "C#", "ASP.NET", "MVC", "SQL", "HTML" }.Contains(t.Name)
+                    )
+                    .ToList(),
+            }
+        );
+
         db.SaveChanges();
     }
 }

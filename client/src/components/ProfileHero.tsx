@@ -1,6 +1,6 @@
 import "./ProfileHero.css";
 import headshot from "../assets/headshot.jpg";
-import { FaLinkedin, FaGithub, FaEnvelope } from "react-icons/fa";
+import SocialLinks from "./SocialLinks";
 
 export default function ProfileHero() {
     return (
@@ -10,38 +10,9 @@ export default function ProfileHero() {
                 <h1>Anthony Asmus</h1>
                 <h3>Software Engineer @ UofM</h3>
                 <p>
-                    My passion is to create full-stack web applications that are
-                    functional, scalable, and engaging. I'm passionate about
-                    using code as both a problem-solving tool and a creative
-                    medium.
+                    Driven by a passion for building systems and solving complex problems, I bring projects to life at the intersection of software engineering and creative execution.
                 </p>
-                <div className="profile-links">
-                    <a
-                        href="https://www.linkedin.com/in/anthonyasmus/"
-                        aria-label="LinkedIn"
-                        className="profile-link"
-                        target="_blank"
-                        rel="noreferrer"
-                    >
-                        <FaLinkedin />
-                    </a>
-                    <a
-                        href="https://github.com/AsmusAJ"
-                        aria-label="GitHub"
-                        className="profile-link"
-                        target="_blank"
-                        rel="noreferrer"
-                    >
-                        <FaGithub />
-                    </a>
-                    <a
-                        href="mailto:anthonyasmus@gmail.com"
-                        aria-label="Email"
-                        className="profile-link"
-                    >
-                        <FaEnvelope />
-                    </a>
-                </div>
+                <SocialLinks />
             </div>
         </section>
     );

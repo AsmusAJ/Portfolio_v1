@@ -46,7 +46,7 @@ export default function Summary() {
         async function fetchProjects() {
             try {
                 const response = await fetch(
-                    "http://localhost:5087/api/projects"
+                    "http://localhost:5087/api/top-projects"
                 );
 
                 if (!response.ok) {

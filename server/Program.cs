@@ -94,6 +94,27 @@ app.MapGet(
         return Results.Ok(projects);
     }
 );
+app.MapGet(
+    "/api/top-projects",
+    async (PortfolioDbContext PortfolioDbContext) =>
+    {
+        var projects = await PortfolioDbContext
+            .Projects.OrderByDescending(w => w.Priority)
+            .ThenBy(w => w.Id)
+            .Take(2)
+            .Select(p => new ProjectDto
+            {
+                Id = p.Id,
+                Title = p.Title,
+                Description = p.Description,
+                Url = p.Url,
+                Tags = p.Tags.Select(t => t.Name).ToList(),
+            })
+            .ToListAsync();
+
+        return Results.Ok(projects);
+    }
+);
 
 app.MapGet("/api/health", () => Results.Ok(new { status = "ok" }));
 

@@ -17,6 +17,9 @@ public class DatabaseSeeder
             "WinForms",
             "EF Core",
             "Flask",
+            "Java",
+            "Processing",
+            "Max",
         };
 
         var existingTagNames = db.Tags.Select(tag => tag.Name).ToHashSet();
@@ -63,19 +66,30 @@ public class DatabaseSeeder
             {
                 Title = "Portfolio Website",
                 Description =
-                    "Developed a full-stack portfolio application using React, TypeScript, ASP.NET Core, and Entity Framework Core to deliver a responsive, data-driven web experience.",
-                Url = "https://kcftech.com/",
+                    "A full-stack portfolio application using React, TypeScript, ASP.NET Core, and Entity Framework Core to deliver a responsive, data-driven web experience.",
+                Url = "https://github.com/AsmusAJ/Portfolio_v1",
                 Priority = 200,
                 Tags = tags.Where(t => new[] { "C#", "ASP.NET", "TypeScript", "React" }.Contains(t.Name)).ToList(),
             },
             new Project
             {
                 Title = "TTRPG Campaign Manager App (Collaborative)",
-                Description = "Built a full-stack web application for managing collaborative tabletop RPG campaigns, including user authentication, campaign/character creation, session tracking, and secure access controls for multi-user data.",
-                Url = "https://howmet.com/",
+                Description = "A full-stack web application for managing collaborative tabletop RPG campaigns, including user authentication, campaign/character creation, session tracking, and secure access controls for multi-user data.",
+                Url = "https://github.com/AsmusAJ/dnd-plus-plus",
                 Priority = 100,
                 Tags = tags.Where(t =>
                         new[] { "Python", "Flask", "JavaScript" }.Contains(t.Name)
+                    )
+                    .ToList(),
+            },
+            new Project
+            {
+                Title = "Gen-Asteroids, procedurally generated soundscape",
+                Description = "An interactive game with a generative music score using Java (Processing Framework), and Max.",
+                Url = "https://github.com/AsmusAJ/gen-asteroids",
+                Priority = 50,
+                Tags = tags.Where(t =>
+                        new[] { "Java", "Processing", "Max" }.Contains(t.Name)
                     )
                     .ToList(),
             }

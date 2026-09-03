@@ -1,0 +1,10 @@
+.about-image {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    object-position: center 45%;
+    border: 1px solid color-mix(in srgb, var(--border) 70%, transparent);
+    border-radius: 10px;
+    box-shadow: 0 16px 35px -20px rgba(36, 31, 27, 0.45);
+}

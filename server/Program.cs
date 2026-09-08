@@ -7,26 +7,48 @@ builder.Services.AddDbContext<PortfolioDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"))
 );
 
+var allowedOrigins = builder.Configuration.GetSection("Cors:AllowedOrigins").Get<string[]>() 
+    ?? ["http://localhost:5173"]; // Fallback for development
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy(
         "AllowFrontend",
         policy =>
         {
-            policy.WithOrigins("http://localhost:5173").AllowAnyHeader().AllowAnyMethod();
+            policy.WithOrigins(allowedOrigins)
+                .AllowAnyHeader()
+                .AllowAnyMethod();
         }
     );
 });
 
 var app = builder.Build();
 
+// Add forwarded headers for reverse proxy (Nginx/Cloudflare)
+app.UseForwardedHeaders();
+
+// Initialize database and seed if needed
 using (var scope = app.Services.CreateScope())
 {
-    var PortfolioDbContext = scope.ServiceProvider.GetRequiredService<PortfolioDbContext>();
-    PortfolioDbContext.Database.EnsureDeleted();
-    PortfolioDbContext.Database.EnsureCreated();
-    var seeder = new DatabaseSeeder();
-    seeder.SeedData(PortfolioDbContext);
+    try
+    {
+        var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
+        var portfolioDbContext = scope.ServiceProvider.GetRequiredService<PortfolioDbContext>();
+        
+        logger.LogInformation("Initializing database...");
+        portfolioDbContext.Database.EnsureCreated();
+        
+        var seeder = new DatabaseSeeder(logger);
+        seeder.SeedData(portfolioDbContext);
+        
+        logger.LogInformation("Database initialization completed successfully.");
+    }
+    catch (Exception ex)
+    {
+        var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
+        logger.LogError(ex, "An error occurred during database initialization. The application will attempt to continue.");
+    }
 }
 
 app.UseCors("AllowFrontend");
@@ -116,6 +138,40 @@ app.MapGet(
     }
 );
 
-app.MapGet("/api/health", () => Results.Ok(new { status = "ok" }));
+app.MapGet("/api/health", async (PortfolioDbContext db, ILogger<Program> logger) =>
+{
+    try
+    {
+        // Check if database is accessible
+        var canConnectDb = await db.Database.CanConnectAsync();
+        
+        if (!canConnectDb)
+        {
+            logger.LogWarning("Health check failed: database connection unavailable");
+            return Results.StatusCode(StatusCodes.Status503ServiceUnavailable);
+        }
+
+        // Check if we can query the database
+        var projectCount = await db.Projects.CountAsync();
+        var experienceCount = await db.WorkExperiences.CountAsync();
+        
+        return Results.Ok(new
+        {
+            status = "healthy",
+            timestamp = DateTime.UtcNow,
+            database = new
+            {
+                connected = true,
+                projects = projectCount,
+                workExperiences = experienceCount
+            }
+        });
+    }
+    catch (Exception ex)
+    {
+        logger.LogError(ex, "Health check failed with exception");
+        return Results.StatusCode(StatusCodes.Status503ServiceUnavailable);
+    }
+});
 
 app.Run();

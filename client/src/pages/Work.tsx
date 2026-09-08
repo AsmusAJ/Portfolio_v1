@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import type { Experience } from "../types/portfolio";
 import { experienceToPortfolioItem } from "../types/portfolio";
+import { fetchWorkExperiences } from "../api";
 import CardContainer from "../components/CardsContainer";
 
 export function Work() {
@@ -9,17 +10,9 @@ export function Work() {
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
-        async function fetchWorkExperience() {
+        async function loadWorkExperience() {
             try {
-                const response = await fetch(
-                    "http://localhost:5087/api/work-experiences"
-                );
-
-                if (!response.ok) {
-                    throw new Error("Failed to fetch work experience");
-                }
-
-                const data = await response.json();
+                const data = await fetchWorkExperiences();
                 setWorkExperience(data);
             } catch (err) {
                 if (err instanceof Error) {
@@ -32,7 +25,7 @@ export function Work() {
             }
         }
 
-        fetchWorkExperience();
+        loadWorkExperience();
     }, []);
 
     if (error) {

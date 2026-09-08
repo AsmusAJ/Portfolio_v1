@@ -9,6 +9,16 @@
     align-items: center;
     justify-content: flex-end;
     list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+@media (max-width: 480px) {
+    .nav-links {
+        gap: 1rem;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
 }
 
 a.nav-link-active {

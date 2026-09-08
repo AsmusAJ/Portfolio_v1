@@ -16,3 +16,11 @@
 .summary-box {
     margin-bottom: 1rem;
 }
+
+@media (max-width: 480px) {
+    .header-box {
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+}

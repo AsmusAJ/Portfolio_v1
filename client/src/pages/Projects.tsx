@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { projectToPortfolioItem, type Project } from "../types/portfolio";
+import { fetchProjects as loadProjects } from "../api";
 import CardContainer from "../components/CardsContainer";
 
 export function Projects() {
@@ -8,17 +9,9 @@ export function Projects() {
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
-        async function fetchProjects() {
+        async function fetchAndLoadProjects() {
             try {
-                const response = await fetch(
-                    "http://localhost:5087/api/projects"
-                );
-
-                if (!response.ok) {
-                    throw new Error("Failed to fetch projects");
-                }
-
-                const data = await response.json();
+                const data = await loadProjects();
                 setProjects(data);
             } catch (err) {
                 if (err instanceof Error) {
@@ -31,7 +24,7 @@ export function Projects() {
             }
         }
 
-        fetchProjects();
+        fetchAndLoadProjects();
     }, []);
 
     if (error) {

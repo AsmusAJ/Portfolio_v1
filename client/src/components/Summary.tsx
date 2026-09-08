@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import { FaExternalLinkAlt } from "react-icons/fa";
 import "./Summary.css";
 import CardContainer from "./CardsContainer";
+import { fetchTopWorkExperiences, fetchTopProjects } from "../api";
 import type { Experience, Project } from "../types/portfolio";
 import {
     experienceToPortfolioItem,
@@ -16,17 +17,9 @@ export default function Summary() {
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
-        async function fetchWorkExperience() {
+        async function loadWorkExperience() {
             try {
-                const response = await fetch(
-                    "http://localhost:5087/api/top-work-experiences"
-                );
-
-                if (!response.ok) {
-                    throw new Error("Failed to fetch work experience");
-                }
-
-                const data = await response.json();
+                const data = await fetchTopWorkExperiences();
                 setWorkExperience(data);
             } catch (err) {
                 if (err instanceof Error) {
@@ -39,21 +32,13 @@ export default function Summary() {
             }
         }
 
-        fetchWorkExperience();
+        loadWorkExperience();
     }, []);
 
     useEffect(() => {
-        async function fetchProjects() {
+        async function loadProjects() {
             try {
-                const response = await fetch(
-                    "http://localhost:5087/api/top-projects"
-                );
-
-                if (!response.ok) {
-                    throw new Error("Failed to fetch projects");
-                }
-
-                const data = await response.json();
+                const data = await fetchTopProjects();
                 setProjects(data);
             } catch (err) {
                 if (err instanceof Error) {
@@ -66,7 +51,7 @@ export default function Summary() {
             }
         }
 
-        fetchProjects();
+        loadProjects();
     }, []);
 
     if (loading) {

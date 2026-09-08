@@ -11,10 +11,10 @@ export function About() {
             <h2>My Background</h2>
             <p> 
                 Hey, thanks for checking out my portfolio! My name is Anthony Asmus, but most people call me AJ.  
-                I'm passionate about creating systems and solutions.  Whether in programming or in music, I love to to make projects come to life.
+                I'm passionate about creating systems and solutions.  Whether in programming or in music, I love to make projects come to life.
             </p>
             <p>
-                I'm currently a senior at the University of Michigan but I have previously held internships at KCF Technologies and Howmet Aerospace.  Currently, I am looking to 
+                I'm a senior at the University of Michigan but I have previously held internships at KCF Technologies and Howmet Aerospace.  Currently, I am looking to 
                 expand my experience and knowledge in full-stack web development.
             </p>
             <p>Feel free to reach out and say hello using one of the below resources!</p>

@@ -1,12 +1,12 @@
 public class DatabaseSeeder
 {
-    private readonly ILogger<DatabaseSeeder>? _logger;
+    private readonly ILogger? _logger;
 
     public DatabaseSeeder() { }
 
-    public DatabaseSeeder(ILogger logger)
+    public DatabaseSeeder(ILogger? logger)
     {
-        _logger = (ILogger<DatabaseSeeder>?)logger ?? null;
+        _logger = logger;
     }
 
     public void SeedData(PortfolioDbContext db)
